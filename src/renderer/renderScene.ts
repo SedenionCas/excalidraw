@@ -175,10 +175,14 @@ const strokeGrid = (
 ) => {
   const BOLD_LINE_FREQUENCY = 5;
 
-  enum GridLineColor {
-    Bold = "#cccccc",
-    Regular = "#e5e5e5",
-  }
+  const GridLineColor = {
+    Bold: getComputedStyle(
+      document.getElementsByClassName("excalidraw")[0],
+    ).getPropertyValue("--bold-grid-color"),
+    Regular: getComputedStyle(
+      document.getElementsByClassName("excalidraw")[0],
+    ).getPropertyValue("--regular-grid-color"),
+  };
 
   const offsetX =
     -Math.round(zoom.value / gridSize) * gridSize + (scrollX % gridSize);
